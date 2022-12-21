@@ -1,45 +1,17 @@
-const prizeBtn = document.querySelector('.info__prize-btn');
-const prizeTable = document.querySelector('.info__prize-table')
-prizeBtn.addEventListener('click', ()=>{
-    prizeTable.classList.toggle('_active');
-    prizeBtn.classList.toggle('_active');
+const itemsReview  = document.querySelectorAll('.casino__item-reviews')
+
+itemsReview.forEach(item => {
+    let buttonItem = item.querySelector('.casino__item-reviews-showMobile-text');
+    let infoItem = item.querySelectorAll('.casino__item-reviews-list');
+    let imagesBtn = item.querySelector('.casino__item-reviews-showMobile-icon');
+    let showMobile = item.querySelector('.casino__item-reviews-showMobile');
+
+    buttonItem.addEventListener('click', ()=>{
+        !showMobile.classList.contains('_open') ? buttonItem.textContent = 'Hide' : buttonItem.textContent = 'Pros and cons'
+        imagesBtn.classList.toggle('_none');
+        showMobile.classList.toggle('_open');
+        infoItem.forEach(info=>{
+            info.classList.toggle('_open')
+        })
+    })
 })
-
-const defineDay = () => {
-
-    const date = Date.now();
-
-    if (date < 1671580800000) {   // 21.12
-        return 0;
-    }
-
-    if (date < 1671667200000) {   // 22.12
-        return 1;
-    }
-
-    if (date < 1671753600000) {   // 23.12
-        return 2;
-    }
-
-    if (date < 1671840000000) {   // 24.12
-        return 3;
-    }
-
-    if (date < 1671926400000) {   // 25.12
-        return 4;
-    }
-
-    if (date < 1672012800000) {   // 26.12
-        return 5;
-    }
-
-    if (date < 1672099200000) {   // 27.12
-        return 6;
-    }
-
-    if (date < 1672185600000) {   // 28.12
-        return 7;
-    }
-
-    return 8;
-}
